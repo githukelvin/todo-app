@@ -1,0 +1,30 @@
+@use "./colors" as *;
+@use "./mixins" as *;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    list-style:none;
+    border:none;
+
+}
+html{
+    color-scheme: light dark;
+}
+body{
+    background:$VeryDarkBlue ;
+
+    transition:  background 200ms ease-in;
+}
+.container{
+    width: 100%;
+    max-width: 87%;
+    margin-inline: auto;
+    // include responsive
+    @include responsive(1440px){
+        max-width: 1440px;
+        width: 34%;
+    }
+}

@@ -229,8 +229,6 @@ document.addEventListener("DOMContentLoaded", getData);
 
 function drag(){
   let draggables = document.querySelectorAll(".list");
-  let dragStartIndex;
-  let dragElement;
   draggables.forEach((draggable ,index)=>{
     draggable.addEventListener("dragstart",()=>{
       draggable.classList.add("dragger");
@@ -240,6 +238,7 @@ function drag(){
        });
   })
 }
+
 function getDragAfterElement(container, y) {
   const draggableElements = [
     ...container.querySelectorAll(".list:not(.dragger)"),

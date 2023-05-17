@@ -12,10 +12,10 @@
 }
 html{
     color-scheme: light dark;
+    width: 100%;
 }
 body{
     background:$VeryDarkBlue ;
-
     transition:  background 200ms ease-in;
 }
 .container{

@@ -24,11 +24,12 @@ header{
             height: 100%;
             padding: 2.98em 0;
             
-            p{
+            h1{
                 font-family: 'bold';
                 font-size: 1.6em;
                 letter-spacing: .42em;
                 text-transform: uppercase;
+                color: #fff;
             } 
             .theme-toggle{
                 $size:20px;

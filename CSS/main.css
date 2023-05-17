@@ -23,6 +23,7 @@
 
 html {
   color-scheme: light dark;
+  width: 100%;
 }
 
 body {
@@ -371,11 +372,12 @@ header .nav {
   height: 100%;
   padding: 2.98em 0;
 }
-header .nav p {
+header .nav h1 {
   font-family: "bold";
   font-size: 1.6em;
   letter-spacing: 0.42em;
   text-transform: uppercase;
+  color: #fff;
 }
 header .nav .theme-toggle {
   width: 20px;

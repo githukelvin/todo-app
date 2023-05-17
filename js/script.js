@@ -18,8 +18,8 @@ let   item ;
 // prevent form from submitting
 
 window.addEventListener("DOMContentLoaded",()=>{
-  // alert("Hello Press Enter to Add a TODO task");
-  // alert("Click the circle to mark a task is completed")
+  alert("Hello Press Enter to Add a TODO task");
+  alert("Click the circle to mark a task is completed")
   
 })
 

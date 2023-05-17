@@ -157,7 +157,7 @@ main {
   justify-content: space-between;
   cursor: move;
 }
-.content .lists .list.drag {
+.content .lists .list.dragger {
   opacity: 0.5;
   padding: 1em 1.3em;
 }

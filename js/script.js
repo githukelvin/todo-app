@@ -233,21 +233,23 @@ function drag(){
   let dragElement;
   draggables.forEach((draggable ,index)=>{
     draggable.addEventListener("dragstart",()=>{
-      draggable.classList.add("drag")
+      draggable.classList.add("dragger");
     })
        draggable.addEventListener("dragend", () => {
-         draggable.classList.remove("drag");
+         draggable.classList.remove("dragger");
        });
   })
 }
 function getDragAfterElement(container, y) {
   const draggableElements = [
-    ...container.querySelectorAll(".list:not(.drag)"),
+    ...container.querySelectorAll(".list:not(.dragger)"),
   ];
   return draggableElements.reduce(
     (closest, child) => {
       const box = child.getBoundingClientRect();
-      const offset = y - box.top - box.height / 2;
+    //  console.log(box.top);
+       const offset =y- box.top- box.height/2;
+      //  console.log(offset)
       if (offset < 0 && offset > closest.offset) {
         return { offset: offset, element: child };
       } else {
@@ -257,9 +259,11 @@ function getDragAfterElement(container, y) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element;
 }
-wrapper.addEventListener("dragover",()=>{
+wrapper.addEventListener("dragover",(e)=>{
   const afterElement = getDragAfterElement(wrapper,e.clientY);
-  const draggable = document.querySelector(".drag");
+  
+  const draggable = document.querySelector(".dragger");
+  
   if(afterElement == null){
     wrapper.appendChild(draggable);
   }

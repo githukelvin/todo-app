@@ -82,7 +82,7 @@ main{
         justify-content: space-between;
         cursor: move;
 
-        &.drag{
+        &.dragger{
             opacity: .5;
             padding: 1em 1.3em;
         }

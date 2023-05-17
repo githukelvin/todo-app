@@ -80,6 +80,12 @@ main{
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        cursor: move;
+
+        &.drag{
+            opacity: .5;
+            padding: 1em 1.3em;
+        }
        &:hover{
          .img {
                 display: block;

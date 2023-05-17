@@ -13,6 +13,8 @@ let info  = document.querySelector(".info")
 let   item ;
 
 
+
+
 // prevent form from submitting
 
 window.addEventListener("DOMContentLoaded",()=>{
@@ -32,7 +34,7 @@ input.addEventListener("keydown", (e) => {
     if (e.keyCode === 13) {
       inputValue = input.value;
         if (inputValue) {
-            let divChild =`    <div class="list">
+            let divChild =`    <div class="list" draggable="true">
            <div class="list-header">
             <div class="radioh " role="radio"></div>
             <p class="para">${inputValue}</p>
@@ -201,7 +203,7 @@ function getData() {
   todos.forEach(({ isCompleted, item }) => {
     let listItem;
     if (isCompleted) {
-      listItem = ` <div class="list">
+      listItem = ` <div class="list" draggable="true">
            <div class="list-header">
             <div class="radioh check" role="radio"></div>
             <p class="para check">${item}</p>
@@ -209,7 +211,7 @@ function getData() {
           <div class="img">
           </div>`;
     } else {
-      listItem = `    <div class="list">
+      listItem = `    <div class="list" draggable="true">
            <div class="list-header">
             <div class="radioh " role="radio"></div>
             <p class="para">${item}</p>
@@ -222,3 +224,48 @@ function getData() {
 }
 
 document.addEventListener("DOMContentLoaded", getData);
+
+// Drag and  Drop  function\
+
+function drag(){
+  let draggables = document.querySelectorAll(".list");
+  let dragStartIndex;
+  let dragElement;
+  draggables.forEach((draggable ,index)=>{
+    draggable.addEventListener("dragstart",()=>{
+      draggable.classList.add("drag")
+    })
+       draggable.addEventListener("dragend", () => {
+         draggable.classList.remove("drag");
+       });
+  })
+}
+function getDragAfterElement(container, y) {
+  const draggableElements = [
+    ...container.querySelectorAll(".list:not(.drag)"),
+  ];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+wrapper.addEventListener("dragover",()=>{
+  const afterElement = getDragAfterElement(wrapper,e.clientY);
+  const draggable = document.querySelector(".drag");
+  if(afterElement == null){
+    wrapper.appendChild(draggable);
+  }
+  else{
+    wrapper.insertBefore(draggable,afterElement);
+  }
+})
+setTimeout(drag,2000)
+
